@@ -3,8 +3,9 @@ body {
 }
 
 div.main {
-  width: 60%;
-  margin-left: 20%;
+  margin: 0px auto;
+  width: 100%;
+  max-width: 800px;
   font-family: sans-serif;
   font-size: 20px;
 }
