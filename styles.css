@@ -19,7 +19,7 @@ div.divider {
   font-style: italic;
 }
 
-div.paragraph {
+p {
   margin-top: 20px;
   margin-bottom: 20px;
 }
@@ -30,7 +30,7 @@ div.footer {
   font-size: 20px;
 }
 
-span.code {
+code {
   font-family: courier;
   font-size: 16px;
 }
