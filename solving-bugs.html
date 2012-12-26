@@ -4,88 +4,56 @@
     <link rel="stylesheet" type="text/css" href="styles.css">
     <meta name="viewport" content="width=device-width, initial-scale=0.9">
   </head>
-<body>
-
-<div class="main">
-
-  <div class="divider">-|--- Back Story ---|-</div>
-
-  <p>I'm surrounded by talented coders, but every so often I meet one who mishandles bugs.</p>
-
-  <p>These coders are not the type to throw their hands in the air when there's a problem. They are smart and dedicated -- their reaction is to dive in, eager to put things right. They begin with some ideas about what the problem might be, they attempt a few fixes...</p>
-
-  <p>An hour later, several patches have been applied but things are still broken. The origins of the bug are now murky, because 20 additional lines of code have been piled on, and one refactor to "increase reliability". 3 hours later they're frustrated, clicking angrily on Stack Overflow, writing commit messages that just say "fuck my life".</p>
-
-  <p>They eventually "fix" the bug, but without gaining any insight into the underlying problem. This cycle repeats, and months later they have a brittle, poorly understood stack, with much cargo culting and many a race condition.</p>
-
-  <p>I know this problem well, because once upon a time, my technique was just this. Not only did it diminish my ability to write great software, but I was also missing out on some of the best learning opportunities of my career.</p>
-
-  <p>Luckily, I encountered a handful of wise mentors who showed me a different path: a way of life where bugs are transcendental, open-ended learning experiences, where "solutions" are used in favor of "fixes", and where we constantly question each other, in order to better ourselves.</p>
-
-  <div class="divider">-|--- Thesis ---|-</div>
-
-  <p>If handled correctly, bugs are among the most fruitful learnings you will ever come across. They will give you deep insight into how things work under the hood -- the kind of wisdom that talented hackers seek out, the kind of things you can't find in textbooks. These learnings are like great spells: find them, learn them, become more powerful...</p>
-
-  <p>When you encounter an aggravating, nasty, despicable bug -- don't get mad! Thank the bug. Cherish it, love it, learn from it, then destroy it mercilessly.</p>
-
-  <p>What follows is a method for dealing with bugs that is quite different from merely "fixing". Fixing means you did something, and now the problem is gone; fixing is not a good habit to get into. Rather than fixing, the next section is devoted to "solving": a habit that has made me a happier, healthier, and more inquisitive hacker.</p>
-
-  <div class="divider">-|--- Method ---|-</div>
-
-  <p>The "solving" method has only a few steps:</p>
-
-  <ul>
-    <li>Come up with a guess about what's causing the bug.</li>
-    <li>Assume the guess is wrong, and try your very best to disprove it, using the tools at your disposal (see below). If disproven, go to step 1, otherwise continue.</li>
-    <li>Write a failing test for the bug.</li>
-    <li>Fix the bug.</li>
-    <li>Ensure the failing test now passes.</li>
-  </ul>
-
-  <p>As a sidenote, if one of your colleagues has just solved a bug -- try to understand it! Ask questions like: "how did you solve it?", "what was the problem?", "did you write a test for it?". Not only will that increase your own understanding of the stack, but it will spur them into thinking more deeply about the problem. These questions are not a sign of doubt, but of respect. Asking them will cause everyone to hold each other to a higher standard.</p>
-
-  <p>And now, lets talk about the *how*, the so-called...</p>
-
-  <div class="divider">-|--- Spells ---|-</div>
-
-  <p>Now the question is: how do you quickly assess a problem, without (necessarily) looking at the source code or putting in additional logging? How do you walk into any situation, equipped to evaluate it and fix it? Even if it's code you're unfamiliar with ..?</p>
-
-  <p>For me, the answer is to have proficiency with a handful of "universal tools" -- lightweight unix tools that can be applied in many different situations. Even without being a systems expert (which I am certainly not), using these tools will actually push you into learning more and more, until one day you find that you're a hacker, with a solid understanding of the kernel, virtual memory, syscalls, tcp/ip, disk I/O, event loops, watchdog timers -- the sky's the limit! And with each new learning, more is revealed, and steadily the magic of these systems in your mind will grow, and you will be asking all sorts of new questions. Pushing boundaries that haven't been pushed!</p>
-
-  <p>But I digress. To bring it back down to earth, here are the most frequently used items from my toolbox (in rough order of importance): <code>ps</code>, <code>top</code>, <code>pstree</code>, <code>procfs</code>, <code>strace/dtrace/ltrace</code>, <code>netstat</code>, <code>tcpdump</code>, <code>wireshark</code>, <code>curl</code>, <code>socat</code>, and <code>nc</code>.</p>
-
-  <ul>
-    <li><code>ps</code> and <code>top</code> will give you the highest level overview of what's happening. You can easily see if a program is pegged at an abnormal CPU, how much memory it's using, whether that memory is growing in an unexpected way, etc.</li>
-    <li><code>pstree</code> is great for getting high-level information about a process, it's children, and any threads it has spawned</li>
-    <li>The <code>proc</code> filesystem is an amazing tool that lets you see all sorts of information about open file descriptors, mapped memory, etc.</li>
-    <li><code>strace</code> is one of my favorite tools -- every time I look at a trace, I learn something new about how things work at the userland / kernel boundary</li>
-    <li><code>netstat</code> is great for seeing what processes are bound to which ports, what state the sockets are in, family, etc.</li>
-    <li><code>tcpdump</code> and <code>wireshark</code> are great for seeing what's happening on the wire</li>
-    <li><code>curl</code>, <code>socat</code>, <code>nc</code> are all great for sending and receiving data, and for me they really shine when debugging api endpoints. For example, you could run: <code>curl -XPOST -d '{"hello": "world"}' -H 'Content-Type: application/json' some.host.com/api/foobar | python -mjson.tool</code> as a quick test to determine whether the right object(s) are coming down from the <code>api/foobar</code> route</li>
-  </ul>
-
-  <div class="divider">-|--- More ---|-</div>
-
-  <p>Less universal, though equally awesome: <code>gdb</code>, <code>gcore</code>, <code>valgrind</code>, <code>perftools</code>, <code>jstack</code>.</p>
-
-  <ul>
-    <li><code>gdb</code> can be viewed either as a debugger or, if you're Linus Torvalds, a "dissassembler on steroids that you can program". It is a truly amazing tool, with extensive capabilities. You could spend a lot of time going deep on gdb's capabilities. In certain environments, you can step and continue the program in reverse execution.</li>
-    <li><code>gcore</code> will give you a core of a running process, which is particularly useful when you don't want to knock the process over to get a dump (which you of course can do by sending it a SIGSEGV, assuming ulimit is set correctly)</li>
-    <li><code>valgrind</code> is an amazing tool for tracking down memory issues -- it's a go-to tool when I suspect memory corruption as the source of a bug. However, beware that programs running under valgrind will run an order of magnitude slower than normal, which can cause certain bugs (especially those caused by race conditions) to become less frequent or to vanish altogether. Also, if you're attempting to debug a program that takes a long time to start up, or has a large memory footprint, it can take a *long* time to run valgrind on it. This is especially painful if you have to run the program multiple times to get the trace you're looking for. My recommendation: run valgrind with the most general options possible, tracing children etc, and if valgrind is completely infeasible, then you should investigate instrumenting malloc() and free() via LD_PRELOAD.</li>
-    <li><code>jstack</code> is great for finding out what the heck those hundreds of threads are doing in a JVM proc</li>
-  </ul>
-
-  <div class="divider">-|--- Even More ---|-</div>
-
-  <p>Infrequently used tools include: <code>strings</code>, <code>c++filt</code>, <code>nm</code>, <code>objdump</code>, <code>size</code>, <code>readelf</code>. These are primarily for debugging issues that arise during compilation of software, or for finding out why a certain shared library doesn't contain some symbol, etc. I won't go into detail on them, but I suggest you check them out.</p>
-
-  <div class="divider">-|--- Conclusion ---|-</div>
-
-  <p>Bugs are frustrating, but anyone can come to love them, and to experience a certain giddy delight when they find a good one and vanquish it. To master the art of this way, there are many freely-available tools of impeccable unix pedigree -- they are your spells to cast. Use them wisely! And next time you find yourself working on a bug, ask yourself: "am I *solving* this problem, or am I merely *fixing* it?".</p>
-
-</div>
-
-<div class="footer">- Gabriel Silk</div>
-
-</body>
+  <body>
+    <div class="main">
+      <div class="divider">-|--- Back Story ---|-</div>
+      <p>I'm surrounded by talented coders, but every so often I meet one who mishandles bugs.</p>
+      <p>These coders are not the type to throw their hands in the air when there's a problem. They are smart and dedicated -- their reaction is to dive in, eager to put things right. They begin with some ideas about what the problem might be, they attempt a few fixes...</p>
+      <p>An hour later, several patches have been applied but things are still broken. The origins of the bug are now murky, because 20 additional lines of code have been piled on, and one refactor to "increase reliability". 3 hours later they're frustrated, clicking angrily on Stack Overflow, writing commit messages that just say "fuck my life".</p>
+      <p>They eventually "fix" the bug, but without gaining any insight into the underlying problem. This cycle repeats, and months later they have a brittle, poorly understood stack, with much cargo culting and many a race condition.</p>
+      <p>I know this problem well, because once upon a time, my technique was just this. Not only did it diminish my ability to write great software, but I was also missing out on some of the best learning opportunities of my career.</p>
+      <p>Luckily, I encountered a handful of wise mentors who showed me a different path: a way of life where bugs are transcendental, open-ended learning experiences, where "solutions" are used in favor of "fixes", and where we constantly question each other, in order to better ourselves.</p>
+      <div class="divider">-|--- Thesis ---|-</div>
+      <p>If handled correctly, bugs are among the most fruitful learnings you will ever come across. They will give you deep insight into how things work under the hood -- the kind of wisdom that talented hackers seek out, the kind of things you can't find in textbooks. These learnings are like great spells: find them, learn them, become more powerful...</p>
+      <p>When you encounter an aggravating, nasty, despicable bug -- don't get mad! Thank the bug. Cherish it, love it, learn from it, then destroy it mercilessly.</p>
+      <p>What follows is a method for dealing with bugs that is quite different from merely "fixing". Fixing means you did something, and now the problem is gone; fixing is not a good habit to get into. Rather than fixing, the next section is devoted to "solving": a habit that has made me a happier, healthier, and more inquisitive hacker.</p>
+      <div class="divider">-|--- Method ---|-</div>
+      <p>The "solving" method has only a few steps:</p>
+      <ul>
+        <li>Come up with a guess about what's causing the bug.</li>
+        <li>Assume the guess is wrong, and try your very best to disprove it, using the tools at your disposal (see below). If disproven, go to step 1, otherwise continue.</li>
+        <li>Write a failing test for the bug.</li>
+        <li>Fix the bug.</li>
+        <li>Ensure the failing test now passes.</li>
+      </ul>
+      <p>As a sidenote, if one of your colleagues has just solved a bug -- try to understand it! Ask questions like: "how did you solve it?", "what was the problem?", "did you write a test for it?". Not only will that increase your own understanding of the stack, but it will spur them into thinking more deeply about the problem. These questions are not a sign of doubt, but of respect. Asking them will cause everyone to hold each other to a higher standard.</p>
+      <p>And now, lets talk about the *how*, the so-called...</p>
+      <div class="divider">-|--- Spells ---|-</div>
+      <p>Now the question is: how do you quickly assess a problem, without (necessarily) looking at the source code or putting in additional logging? How do you walk into any situation, equipped to evaluate it and fix it? Even if it's code you're unfamiliar with ..?</p>
+      <p>For me, the answer is to have proficiency with a handful of "universal tools" -- lightweight unix tools that can be applied in many different situations. Even without being a systems expert (which I am certainly not), using these tools will actually push you into learning more and more, until one day you find that you're a hacker, with a solid understanding of the kernel, virtual memory, syscalls, tcp/ip, disk I/O, event loops, watchdog timers -- the sky's the limit! And with each new learning, more is revealed, and steadily the magic of these systems in your mind will grow, and you will be asking all sorts of new questions. Pushing boundaries that haven't been pushed!</p>
+      <p>But I digress. To bring it back down to earth, here are the most frequently used items from my toolbox (in rough order of importance): <code>ps</code>, <code>top</code>, <code>pstree</code>, <code>procfs</code>, <code>strace/dtrace/ltrace</code>, <code>netstat</code>, <code>tcpdump</code>, <code>wireshark</code>, <code>curl</code>, <code>socat</code>, and <code>nc</code>.</p>
+      <ul>
+        <li><code>ps</code> and <code>top</code> will give you the highest level overview of what's happening. You can easily see if a program is pegged at an abnormal CPU, how much memory it's using, whether that memory is growing in an unexpected way, etc.</li>
+        <li><code>pstree</code> is great for getting high-level information about a process, it's children, and any threads it has spawned</li>
+        <li>The <code>proc</code> filesystem is an amazing tool that lets you see all sorts of information about open file descriptors, mapped memory, etc.</li>
+        <li><code>strace</code> is one of my favorite tools -- every time I look at a trace, I learn something new about how things work at the userland / kernel boundary</li>
+        <li><code>netstat</code> is great for seeing what processes are bound to which ports, what state the sockets are in, family, etc.</li>
+        <li><code>tcpdump</code> and <code>wireshark</code> are great for seeing what's happening on the wire</li>
+        <li><code>curl</code>, <code>socat</code>, <code>nc</code> are all great for sending and receiving data, and for me they really shine when debugging api endpoints. For example, you could run: <code>curl -XPOST -d '{"hello": "world"}' -H 'Content-Type: application/json' some.host.com/api/foobar | python -mjson.tool</code> as a quick test to determine whether the right object(s) are coming down from the <code>api/foobar</code> route</li>
+      </ul>
+      <div class="divider">-|--- More ---|-</div>
+      <p>Less universal, though equally awesome: <code>gdb</code>, <code>gcore</code>, <code>valgrind</code>, <code>perftools</code>, <code>jstack</code>.</p>
+      <ul>
+        <li><code>gdb</code> can be viewed either as a debugger or, if you're Linus Torvalds, a "disassembler on steroids that you can program". It is a truly amazing tool, with extensive capabilities. You could spend a lot of time going deep on gdb's capabilities. In certain environments, you can step and continue the program in reverse execution.</li>
+        <li><code>gcore</code> will give you a core of a running process, which is particularly useful when you don't want to knock the process over to get a dump (which you of course can do by sending it a SIGSEGV, assuming ulimit is set correctly)</li>
+        <li><code>valgrind</code> is an amazing tool for tracking down memory issues -- it's a go-to tool when I suspect memory corruption as the source of a bug. However, beware that programs running under valgrind will run an order of magnitude slower than normal, which can cause certain bugs (especially those caused by race conditions) to become less frequent or to vanish altogether. Also, if you're attempting to debug a program that takes a long time to start up, or has a large memory footprint, it can take a *long* time to run valgrind on it. This is especially painful if you have to run the program multiple times to get the trace you're looking for. My recommendation: run valgrind with the most general options possible, tracing children etc, and if valgrind is completely infeasible, then you should investigate instrumenting malloc() and free() via LD_PRELOAD.</li>
+        <li><code>jstack</code> is great for finding out what the heck those hundreds of threads are doing in a JVM proc</li>
+      </ul>
+      <div class="divider">-|--- Even More ---|-</div>
+      <p>Infrequently used tools include: <code>strings</code>, <code>c++filt</code>, <code>nm</code>, <code>objdump</code>, <code>size</code>, <code>readelf</code>. These are primarily for debugging issues that arise during compilation of software, or for finding out why a certain shared library doesn't contain some symbol, etc. I won't go into detail on them, but I suggest you check them out.</p>
+      <div class="divider">-|--- Conclusion ---|-</div>
+      <p>Bugs are frustrating, but anyone can come to love them, and to experience a certain giddy delight when they find a good one and vanquish it. To master the art of this way, there are many freely-available tools of impeccable unix pedigree -- they are your spells to cast. Use them wisely! And next time you find yourself working on a bug, ask yourself: "am I *solving* this problem, or am I merely *fixing* it?".</p>
+    </div>
+    <div class="footer">- Gabriel Silk</div>
+  </body>
 </html>
