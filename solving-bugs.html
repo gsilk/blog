@@ -1,13 +1,14 @@
 <html>
-<head>
-<title>Bugs</title>
-<link rel="stylesheet" type="text/css" href="styles.css">
-</head>
+  <head>
+    <title>Bugs</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <meta name="viewport" content="width=device-width, initial-scale=0.9">
+  </head>
 <body>
 
 <div class="main">
 
-  <div class="divider">-|---------------Back Story---------------|-</div>
+  <div class="divider">-|--- Back Story ---|-</div>
 
   <p>I'm surrounded by talented coders, but every so often I meet one who mishandles bugs.</p>
 
@@ -17,9 +18,11 @@
 
   <p>They eventually "fix" the bug, but without gaining any insight into the underlying problem. This cycle repeats, and months later they have a brittle, poorly understood stack, with much cargo culting and many a race condition.</p>
 
-  <p>I know this problem well, because once upon a time, my technique was just this. Not only did it diminish my ability to write great software, but I was also missing out on some of the best learning opportunities of my career. Luckily, I encountered a handful of wise mentors who showed me a different path: a way of life where bugs are transcendental, open-ended learning experiences, where "solutions" are used in favor of "fixes", and where we constantly question each other, in order to better ourselves.</p>
+  <p>I know this problem well, because once upon a time, my technique was just this. Not only did it diminish my ability to write great software, but I was also missing out on some of the best learning opportunities of my career.</p>
 
-  <div class="divider">-|----------------Thesis----------------|-</div>
+  <p>Luckily, I encountered a handful of wise mentors who showed me a different path: a way of life where bugs are transcendental, open-ended learning experiences, where "solutions" are used in favor of "fixes", and where we constantly question each other, in order to better ourselves.</p>
+
+  <div class="divider">-|--- Thesis ---|-</div>
 
   <p>If handled correctly, bugs are among the most fruitful learnings you will ever come across. They will give you deep insight into how things work under the hood -- the kind of wisdom that talented hackers seek out, the kind of things you can't find in textbooks. These learnings are like great spells: find them, learn them, become more powerful...</p>
 
@@ -27,7 +30,7 @@
 
   <p>What follows is a method for dealing with bugs that is quite different from merely "fixing". Fixing means you did something, and now the problem is gone; fixing is not a good habit to get into. Rather than fixing, the next section is devoted to "solving": a habit that has made me a happier, healthier, and more inquisitive hacker.</p>
 
-  <div class="divider">-|---------------Method---------------|-</div>
+  <div class="divider">-|--- Method ---|-</div>
 
   <p>The "solving" method has only a few steps:</p>
 
@@ -43,7 +46,7 @@
 
   <p>And now, lets talk about the *how*, the so-called...</p>
 
-  <div class="divider">-|------------------Spells------------------|-</div>
+  <div class="divider">-|--- Spells ---|-</div>
 
   <p>Now the question is: how do you quickly assess a problem, without (necessarily) looking at the source code or putting in additional logging? How do you walk into any situation, equipped to evaluate it and fix it? Even if it's code you're unfamiliar with ..?</p>
 
@@ -61,7 +64,7 @@
     <li><code>curl</code>, <code>socat</code>, <code>nc</code> are all great for sending and receiving data, and for me they really shine when debugging api endpoints. For example, you could run: <code>curl -XPOST -d '{"hello": "world"}' -H 'Content-Type: application/json' some.host.com/api/foobar | python -mjson.tool</code> as a quick test to determine whether the right object(s) are coming down from the <code>api/foobar</code> route</li>
   </ul>
 
-  <div class="divider">-|---------------More----------------|-</div>
+  <div class="divider">-|--- More ---|-</div>
 
   <p>Less universal, though equally awesome: <code>gdb</code>, <code>gcore</code>, <code>valgrind</code>, <code>perftools</code>, <code>jstack</code>.</p>
 
@@ -72,11 +75,11 @@
     <li><code>jstack</code> is great for finding out what the heck those hundreds of threads are doing in a JVM proc</li>
   </ul>
 
-  <div class="divider">-|-------------Even More--------------|-</div>
+  <div class="divider">-|--- Even More ---|-</div>
 
   <p>Infrequently used tools include: <code>strings</code>, <code>c++filt</code>, <code>nm</code>, <code>objdump</code>, <code>size</code>, <code>readelf</code>. These are primarily for debugging issues that arise during compilation of software, or for finding out why a certain shared library doesn't contain some symbol, etc. I won't go into detail on them, but I suggest you check them out.</p>
 
-  <div class="divider">-|-------------Conclusion--------------|-</div>
+  <div class="divider">-|--- Conclusion ---|-</div>
 
   <p>Bugs are frustrating, but anyone can come to love them, and to experience a certain giddy delight when they find a good one and vanquish it. To master the art of this way, there are many freely-available tools of impeccable unix pedigree -- they are your spells to cast. Use them wisely! And next time you find yourself working on a bug, ask yourself: "am I *solving* this problem, or am I merely *fixing* it?".</p>
 
