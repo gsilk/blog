@@ -23,7 +23,7 @@
 
   <p>If handled correctly, bugs are among the most fruitful learnings you will ever come across. They will give you deep insight into how things work under the hood -- the kind of wisdom that talented hackers seek out, the kind of things you can't find in textbooks. These learnings are like great spells: find them, learn them, become more powerful...</p>
 
-  <p>When you encounter an aggravating, nasty, desicable bug -- don't get mad! Thank the bug. Cherish it, love it, learn from it, then destroy it mercilessly.</p>
+  <p>When you encounter an aggravating, nasty, despicable bug -- don't get mad! Thank the bug. Cherish it, love it, learn from it, then destroy it mercilessly.</p>
 
   <p>What follows is a method for dealing with bugs that is quite different from merely "fixing". Fixing means you did something, and now the problem is gone; fixing is not a good habit to get into. Rather than fixing, the next section is devoted to "solving": a habit that has made me a happier, healthier, and more inquisitive hacker.</p>
 
@@ -49,24 +49,28 @@
 
   <p>For me, the answer is to have proficiency with a handful of "universal tools" -- lightweight unix tools that can be applied in many different situations. Even without being a systems expert (which I am certainly not), using these tools will actually push you into learning more and more, until one day you find that you're a hacker, with a solid understanding of the kernel, virtual memory, syscalls, tcp/ip, disk I/O, event loops, watchdog timers -- the sky's the limit! And with each new learning, more is revealed, and steadily the magic of these systems in your mind will grow, and you will be asking all sorts of new questions. Pushing boundaries that haven't been pushed!</p>
 
-  <p>But I digress. To bring it back down to earth, here is what I have in my toolbox (in rough order of importance): <code>ps</code>, <code>top</code>, <code>pstree</code>, <code>procfs</code>, <code>strace/dtrace/ltrace</code>, <code>netstat</code>, <code>tcpdump</code>, <code>wireshark</code>, <code>curl</code>, <code>socat</code>, <code>nc</code>.</p>
+  <p>But I digress. To bring it back down to earth, here is what I have in my toolbox (in rough order of importance): <code>ps</code>, <code>top</code>, <code>pstree</code>, <code>procfs</code>, <code>strace/dtrace/ltrace</code>, <code>netstat</code>, <code>tcpdump</code>, <code>wireshark</code>, <code>curl</code>, <code>socat</code>, and <code>nc</code>.</p>
 
-  <li><code>ps</code> and <code>top</code> will give you the highest level overview of what's happening. You can easily see if a program is pegged at an abnormal CPU, how much memory it's using, whether that memory is growing in an unexpected way, etc.</li>
-  <li><code>pstree</code> is great for getting high-level information about a process, it's children, and any threads it has spawned</li>
-  <li>The <code>proc</code> filesystem is an amazing tool that lets you see all sorts of information about open file descriptors, mapped memory, etc.</li>
-  <li><code>strace</code> is one of my favorite tools -- every time I look at a trace, I learn something new about how things work at the userland / kernel boundary</li>
-  <li><code>netstat</code> is great for seeing what processes are bound to which ports, what state the sockets are in, family, etc.</li>
-  <li><code>tcpdump</code> and <code>wireshark</code> are great for seeing what's happening on the wire</li>
-  <li><code>curl</code>, <code>socat</code>, <code>nc</code> are all great for sending and receiving data, and for me they really shine when debugging api endpoints. For example, you could run: <code>curl -XPOST -d '{"hello": "world"}' -H 'Content-Type: application/json' some.host.com/api/foobar | python -mjson.tool</code> as a quick test to determine whether the right object(s) are coming down from the <code>api/foobar</code> route</li>
+  <ul>
+    <li><code>ps</code> and <code>top</code> will give you the highest level overview of what's happening. You can easily see if a program is pegged at an abnormal CPU, how much memory it's using, whether that memory is growing in an unexpected way, etc.</li>
+    <li><code>pstree</code> is great for getting high-level information about a process, it's children, and any threads it has spawned</li>
+    <li>The <code>proc</code> filesystem is an amazing tool that lets you see all sorts of information about open file descriptors, mapped memory, etc.</li>
+    <li><code>strace</code> is one of my favorite tools -- every time I look at a trace, I learn something new about how things work at the userland / kernel boundary</li>
+    <li><code>netstat</code> is great for seeing what processes are bound to which ports, what state the sockets are in, family, etc.</li>
+    <li><code>tcpdump</code> and <code>wireshark</code> are great for seeing what's happening on the wire</li>
+    <li><code>curl</code>, <code>socat</code>, <code>nc</code> are all great for sending and receiving data, and for me they really shine when debugging api endpoints. For example, you could run: <code>curl -XPOST -d '{"hello": "world"}' -H 'Content-Type: application/json' some.host.com/api/foobar | python -mjson.tool</code> as a quick test to determine whether the right object(s) are coming down from the <code>api/foobar</code> route</li>
+  </ul>
 
   <div class="divider">-|---------------More----------------|-</div>
 
   <p>Less universal, though equally awesome: <code>gdb</code>, <code>gcore</code>, <code>valgrind</code>, <code>perftools</code>, <code>jstack</code>.</p>
 
-  <li><code>gdb</code> can be viewed either as a debugger or, if you're Linus Torvalds, a "dissassembler on steroids that you can program". It is a truly amazing tool, with extensive capabilities. You could spend a lot of time going deep on gdb's capabilities. In certain environments, you can step and continue the program in reverse execution.</li>
-  <li><code>gcore</code> will give you a core of a running process, which is particularly useful when you don't want to knock the process over to get a dump (which you of course can do by sending it a SIGSEGV, assuming ulimit is set correctly)</li>
-  <li><code>valgrind</code> is an amazing tool for tracking down memory issues -- it's a go-to tool when I suspect memory corruption as the source of a bug. However, beware that programs running under valgrind will run an order of magnitude slower than normal, which can cause certain bugs (especially those caused by race conditions) to become less frequent or to vanish altogether. Also, if you're attempting to debug a program that takes a long time to start up, or has a large memory footprint, it can take a *long* time to run valgrind on it. This is especially painful if you have to run the program multiple times to get the trace you're looking for. My recommendation: run valgrind with the most general options possible, tracing children etc, and if valgrind is completely infeasible, then you should investigate instrumenting malloc() and free() via LD_PRELOAD.</li>
-  <li><code>jstack</code> is great for finding out what the heck those hundreds of threads are doing in a JVM proc</li>
+  <ul>
+    <li><code>gdb</code> can be viewed either as a debugger or, if you're Linus Torvalds, a "dissassembler on steroids that you can program". It is a truly amazing tool, with extensive capabilities. You could spend a lot of time going deep on gdb's capabilities. In certain environments, you can step and continue the program in reverse execution.</li>
+    <li><code>gcore</code> will give you a core of a running process, which is particularly useful when you don't want to knock the process over to get a dump (which you of course can do by sending it a SIGSEGV, assuming ulimit is set correctly)</li>
+    <li><code>valgrind</code> is an amazing tool for tracking down memory issues -- it's a go-to tool when I suspect memory corruption as the source of a bug. However, beware that programs running under valgrind will run an order of magnitude slower than normal, which can cause certain bugs (especially those caused by race conditions) to become less frequent or to vanish altogether. Also, if you're attempting to debug a program that takes a long time to start up, or has a large memory footprint, it can take a *long* time to run valgrind on it. This is especially painful if you have to run the program multiple times to get the trace you're looking for. My recommendation: run valgrind with the most general options possible, tracing children etc, and if valgrind is completely infeasible, then you should investigate instrumenting malloc() and free() via LD_PRELOAD.</li>
+    <li><code>jstack</code> is great for finding out what the heck those hundreds of threads are doing in a JVM proc</li>
+  </ul>
 
   <div class="divider">-|-------------Even More--------------|-</div>
 
