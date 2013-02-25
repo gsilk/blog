@@ -26,6 +26,11 @@ div.divider {
   font-style: italic;
 }
 
+div.topnav {
+  text-align: center;
+  font-size: 16px;
+}
+
 p {
   margin-top: 20px;
   margin-bottom: 20px;
