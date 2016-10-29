@@ -21,9 +21,9 @@ div.quote {
 }
 
 div.divider {
-  margin-top: 40px;
+  margin-top: 64px;
   text-align: center;
-  font-style: italic;
+  font-size: 32px;
 }
 
 div.topnav {
