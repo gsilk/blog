@@ -1,0 +1,36 @@
+<html>
+  <head>
+    <title>Gabriel Silk - Nomic 2.0</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <meta name="viewport" content="width=device-width, initial-scale=0.9">
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-37145984-1']);
+      _gaq.push(['_trackPageview']);
+      (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="divider">Nomic 2.0</div>
+      <p>(I highly recommend taking a look at <a href="nomic_1.0.html">Nomic 1.0</a> if you haven't already -- it puts Nomic 2.0 in context and makes for an interesting read!)</p>
+      <h3>Background</h3>
+      <p>After pushing the initial product for almost a year, we realized that the dream of harnessing on-demand recruiting power (a la Uber) was a problematic one. The main problems were maintaining a consistent flow of candidates and keeping a good signal-to-noise ratio. We also had questions about the economic model and feasibility of the business -- the payouts we were getting simply weren't high enough.</p>
+      <p>We took a step back, and made the decision to pivot into more familiar territory: the professional recruiter. Based on early feedback and research, we decided to switch from mobile to a desktop experience. After a few months of dedicated effort, Nomic 2.0 was live, and meeting with early success.</p>
+      <p>Here's a demo video of Nomic 2.0 (full screen recommended):</p>
+      <center>
+        <iframe width="100%" height="500" src="https://www.youtube.com/embed/RXsDLba_Ym8" frameborder="0" allowfullscreen></iframe>
+      </center>
+      <p>Ultimately, we failed to get a new round of funding, and were obliged to shut Nomic down. It was a fun project to work on, and I think there were a lot of great ideas there.</p>
+      <h3>Implementation</h3>
+      <p>We built Nomic 2.0 as a single-page app, leveraging our experience from Nomic 1.0 (which was a mobile app implemented in Javascript that ran on Android and iOS using Cordova). Our db was Postgres, backend was NodeJS, and our frontend was 100% Javascript (no css or html).</p>
+      <p>Using Javascript everywhere enabled us to easily share logic across disparate parts of the system. Using a relational db as the system of record was unspeakably beautiful -- particularly as Postgres in the early 9.x's started implementing a lot of functionality for working with unstructured data, which turns out to be useful when you're feeling out your feature set.</p>
+      <p>Ditching HTML was a godsend, and we owe thanks to React for this idea. Back in the day, we had tried Angular, and found it wanting. We moved to React, but weren't enamoured of their object model (for example, why is there a concept called "componentWillReceiveProps"? Why are there both "state" and "props"?) But the core idea we took from it was to stop writing HTML in favor of Javascript, and furthermore to do the same for CSS.</p>
+      <p>We hit on some good ideas in the process, and we're now working on open-sourcing the tools and libraries we built along the way.</p>
+    </div>
+  </body>
+</html>
