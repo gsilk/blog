@@ -1,0 +1,16 @@
+<svg width="25" height="25" viewBox="0 0 25 25" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:figma="http://www.figma.com/figma/ns">
+<title>Medium-01</title>
+<desc>Created using Figma</desc>
+<g id="Canvas" transform="translate(-36 14)" figma:type="canvas">
+<g id="Medium-01" style="mix-blend-mode:normal;" figma:type="frame">
+<g id="XMLID 1" style="mix-blend-mode:normal;" figma:type="frame">
+<g id="XMLID 8" style="mix-blend-mode:normal;" figma:type="vector">
+<use xlink:href="#path0_fill" transform="translate(36.5 -13.5)" fill="#333333" style="mix-blend-mode:normal;"/>
+</g>
+</g>
+</g>
+</g>
+<defs>
+<path id="path0_fill" d="M 12 0C 5.36727 0 0 5.45779 0 12.2024C 0 18.947 5.36727 24.4047 12 24.4047C 18.6327 24.4047 24 18.947 24 12.2024C 24 5.45779 18.6327 0 12 0ZM 9.29455 18.0151L 5.10545 15.9296C 5.06182 15.8853 4.97455 15.7965 4.97455 15.7078L 4.97455 6.03463L 9.25091 8.20887L 9.25091 18.0151L 9.29455 18.0151ZM 9.81818 13.4004L 9.81818 9.00757L 13.6582 15.3528L 9.81818 13.4004ZM 11.52 10.8268L 14.4873 5.99025L 18.8073 8.20887L 14.3564 15.5303L 11.52 10.8268ZM 18.9382 18.0151L 14.7491 15.9296L 18.9382 9.00757L 18.9382 18.0151Z"/>
+</defs>
+</svg>

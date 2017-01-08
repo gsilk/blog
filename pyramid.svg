@@ -1,0 +1,16 @@
+<svg width="31" height="29" viewBox="0 0 31 29" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:figma="http://www.figma.com/figma/ns">
+<title>noun_354822_cc</title>
+<desc>Created using Figma</desc>
+<g id="Canvas" transform="translate(135 426)" figma:type="canvas">
+<g id="noun_354822_cc" style="mix-blend-mode:normal;" figma:type="frame">
+<g id="Group" style="mix-blend-mode:normal;" figma:type="frame">
+<g id="Vector" style="mix-blend-mode:normal;" figma:type="vector">
+<use xlink:href="#path0_fill" transform="translate(-134.5 -425.833)" fill="#000000" fill-opacity="0.9" style="mix-blend-mode:normal;"/>
+</g>
+</g>
+</g>
+</g>
+<defs>
+<path id="path0_fill" fill-rule="evenodd" d="M 15 26.2132L 15 2.49075e-07L 30 20.3799L 15 28L 0 20.3799L 15 26.2132Z"/>
+</defs>
+</svg>

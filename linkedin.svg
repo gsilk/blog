@@ -1,0 +1,20 @@
+<svg width="24" height="25" viewBox="0 0 24 25" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:figma="http://www.figma.com/figma/ns">
+<title>linkedin</title>
+<desc>Created using Figma</desc>
+<g id="Canvas" transform="translate(11 13)" figma:type="canvas">
+<g id="linkedin" style="mix-blend-mode:normal;" figma:type="frame">
+<g id="Group" style="mix-blend-mode:normal;" figma:type="frame">
+<g id="Vector" style="mix-blend-mode:normal;" figma:type="vector">
+<use xlink:href="#path0_fill" transform="translate(1.02693 -1.17085)" style="mix-blend-mode:normal;"/>
+</g>
+<g id="Vector" style="mix-blend-mode:normal;" figma:type="vector">
+<use xlink:href="#path1_fill" transform="translate(-11 -12.9047)" style="mix-blend-mode:normal;"/>
+</g>
+</g>
+</g>
+</g>
+<defs>
+<path id="path0_fill" d="M 0.0216769 0.0216862C 0.0216769 -0.0270943 -0.0271029 0.0216862 0.0216769 0.0216862L 0.0216769 0.0216862Z"/>
+<path id="path1_fill" d="M 11.9998 0C 5.36578 0 5.95457e-06 5.45635 5.95457e-06 12.2024C 5.95457e-06 18.9484 5.36578 24.4047 11.9998 24.4047C 18.6339 24.4047 23.9997 18.9484 23.9997 12.2024C 24.0484 5.50595 18.6339 0 11.9998 0ZM 9.36572 16.4186L 7.31698 16.4186L 7.31698 10.2182L 9.36572 10.2182L 9.36572 16.4186ZM 8.34134 9.37499C 7.65843 9.37499 7.21941 8.87897 7.21941 8.28373C 7.21941 7.68849 7.65843 7.19245 8.34134 7.19245C 9.02426 7.19245 9.46329 7.63889 9.46329 8.28373C 9.51207 8.87897 9.07304 9.37499 8.34134 9.37499ZM 16.6827 16.4186L 14.6339 16.4186L 14.6339 13.0952C 14.6339 12.252 14.3413 11.7063 13.6096 11.7063C 13.073 11.7063 12.7315 12.1032 12.5852 12.4504C 12.5364 12.5992 12.5364 12.748 12.5364 12.9464L 12.5364 16.4186L 10.4877 16.4186C 10.4877 16.4186 10.5364 10.8135 10.4877 10.2182L 12.5364 10.2182L 12.5364 11.1111C 12.8291 10.6647 13.2681 10.0694 14.3413 10.0694C 15.6583 10.0694 16.6827 10.9623 16.6827 12.8472L 16.6827 16.4186Z"/>
+</defs>
+</svg>
