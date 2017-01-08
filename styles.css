@@ -2,17 +2,26 @@ body {
     background-color: #fff;
     line-height: 1.5;
     font-size: 14px;
-    font-family: 'Roboto', sans-serif;
+    font-family: sans-serif;
     font-weight: 400;
     color: #444;
     padding: 40px 0;
+}
+
+.header-pyramid {
+    position: absolute;
+    left: 39px;
+    bottom: 8px;
 }
 
 div.main {
     margin: 0px auto;
     text-align: justify;
     text-justify: inter-word;
-    width: 448px;
+    max-width: 540px;
+    width: 100%;
+    padding: 2em;
+    box-sizing: border-box;
 }
 
 div.quote {
@@ -25,7 +34,7 @@ div.quote {
 div.divider {
     width: 100%;
     height: 1px;
-    background-color: #eee;
+    background-color: #eaeaea;
     margin: 42px 0;
 }
 
@@ -101,6 +110,28 @@ h5 {
     font-weight: 400;
 }
 
+@media (max-width: 540px) {
+    h1 {
+        font-size: 38px;
+    }
+    .header-pyramid {
+        width: 25px;
+        left: 31px;
+        bottom: 7px;
+    }
+    h2 {
+        font-size: 20px;
+    }
+    h3 {
+        font-size: 14px;
+        letter-spacing: 2.75;
+    }
+    h4 {
+    }
+    h5 {
+    }
+}
+
 .invisible {
     opacity: 0;
 }
@@ -129,7 +160,7 @@ a {
 }
 
 .social img {
-    opacity: 0.25;
+    opacity: 0.625;
 }
 
 .social img:hover {
@@ -147,8 +178,6 @@ a {
 }
 
 .flourish {
-    border: 1px solid black;
     padding: 16px;
-    border-radius: 50%;
-    opacity: 0.1;
+    opacity: 0.125;
 }
