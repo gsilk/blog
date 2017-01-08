@@ -24,13 +24,6 @@ div.main {
     box-sizing: border-box;
 }
 
-div.quote {
-    margin-top: 20px;
-    margin-bottom: 20px;
-    text-align: center;
-    font-style: italic;
-}
-
 div.divider {
     width: 100%;
     height: 1px;
